@@ -3,10 +3,10 @@
     "pages/index/index",
     "pages/record/record",
     "pages/count/count",
-    "pages/iconListData/iconListData",
-    "pages/zc/zc",
+    "pages/add/add",
     "pages/exit/exit",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/sort/sort"
   ],
   "window": {
     "backgroundTextStyle": "light",

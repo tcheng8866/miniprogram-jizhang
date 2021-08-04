@@ -1,8 +1,11 @@
 const cloud = require('wx-server-sdk')
+
+// 首页、初始化查询（按月、默认当月）
 cloud.init()
 const db = cloud.database()
 const MAX_LIMIT = 100
 exports.main = async (event, context) => {
+  console.log("getListData", event)
   let { OPENID, APPID, UNIONID } = cloud.getWXContext()
   // 先取出集合记录总数
   const countResult = await db.collection('priveTable').count()

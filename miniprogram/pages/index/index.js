@@ -82,7 +82,7 @@ Page({
     }).catch(err => {
       console.log(err);
       wx.hideLoading();
-      that.getDataList();
+      // that.getDataList();
     })
   },
   bindDateChange: function (e) {    //选择日期监听
@@ -136,12 +136,12 @@ Page({
     }
   },
   zcfun(e) {
-    wx.navigateTo({ url: '../zc/zc?status=0' });  //跳转记账页面 参数status = 0 是支出的状态
+    wx.navigateTo({ url: '../add/add?status=0' });  //跳转记账页面 参数status = 0 是支出的状态
     this.setData({ addimgStyle: '', menuStyle: 'transform: rotate(180deg);transition: all .3s;' });
     setTimeout(() => { this.setData({ addimgStyle: '', menuStyle: '' }); }, 300);
   },
   srfun(e) {
-    wx.navigateTo({ url: '../zc/zc?status=1' });   //跳转记账页面 参数status = 1 是收入的状态
+    wx.navigateTo({ url: '../add/add?status=1' });   //跳转记账页面 参数status = 1 是收入的状态
     this.setData({ addimgStyle: '', menuStyle: 'transform: rotate(180deg);transition: all .3s;' });
     setTimeout(() => { this.setData({ addimgStyle: '', menuStyle: '' }); }, 300);
   },
@@ -188,7 +188,7 @@ Page({
   goimgfun(e) {
     console.log(e.currentTarget.dataset.img)
     wx.navigateTo({
-      url: '../iconListData/iconListData?img=' + e.currentTarget.dataset.img,
+      url: '../sort/sort?img=' + e.currentTarget.dataset.img,
     })
     this.setData({ stopPageScroll: '', shuaixuanboxBottom: 'bottom:-100%' })
   },
