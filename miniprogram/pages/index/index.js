@@ -30,20 +30,24 @@ Page({
     mxStyle: '',
     stopPageScroll: ''
   },
-  onReady() {
-    wx.createSelectorQuery().selectAll(".bottom-box").boundingClientRect(function (res) {
-      that.setData({ BottomBoxHeight: "height:" + res[0].height + "px;" })
-    }).exec();
+  onLoad(options) {
+    // 1. onLoad => onShow => onReady  
+    // 2. onShow 页面激活即执行（页面未销毁、先跳转其他再跳转回来）
+    // 3. 此处that为全局变量、后续任何地方可用
+    // 4. 页面数据仅查询一次就好了、其他的销毁后自动查询
+    that = this;
+    that.getDataList();
   },
   onShow() {
     this.setData({ tjimg: '../../images/tj-h.png', mximg: '../../images/rl-h.png', mxStyle: '', tjStyle: '' })
     if (this.data.state) { wx.pageScrollTo({ scrollTop: 0 }); this.setData({ state: false }) }
   },
-  onLoad(options) {
-    that = this;
-    that.getDataList();
+  onReady() {
+    wx.createSelectorQuery().selectAll(".bottom-box").boundingClientRect(function (res) {
+      that.setData({ BottomBoxHeight: "height:" + res[0].height + "px;" })
+    }).exec();
   },
-  getDataList() {                   //获取数据 
+  getDataList() {
     wx.showLoading({ title: '' });  //loading加载
     wx.cloud.callFunction({         //云函数调用
       name: 'getListData',          //云函数名称

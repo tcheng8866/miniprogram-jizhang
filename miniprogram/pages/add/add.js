@@ -1,5 +1,6 @@
 import {
   getWeek,
+  getCurDate,
   getCurDateFmt,
 } from "../../uits/uits.js";
 
@@ -19,7 +20,7 @@ Page({
     formSubmit: "formSubmit",
     end: new Date().getFullYear() + "-" + (new Date().getMonth() + 1).toString() + "-" + (new Date().getDate()).toString(),
     // date: '今天',
-    date: getCurDateFmt('年月日星期'),
+    date: getCurDate(),
     year: (new Date().getFullYear()).toString(),
     month: (new Date().getMonth() + 1).toString(),
     day: (new Date().getDate()).toString(),

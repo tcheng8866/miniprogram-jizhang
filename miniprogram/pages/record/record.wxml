@@ -41,7 +41,7 @@
   </block>
 </scroll-view>
 <view  wx:if="{{dataList.length ==0 || dataList[0].dataList.length == 0}}">
-  <image src="/images/1.png" class="nodata"></image>
+  <image src="/images/none.png" class="nodata"></image>
   <view style="text-align:center;">今天还没有记账</view>
   <!-- <view class="createorder">创建一笔账单</view> -->
 </view>

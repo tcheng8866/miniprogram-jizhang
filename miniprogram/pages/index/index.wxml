@@ -61,7 +61,7 @@
     </view>
   </block>
   <view class='noData' wx:if="{{dataList.length == 0}}">
-    <image src='../../images/1.png' class='noData-img' mode='widthFix'></image>
+    <image src='../../images/none.png' class='noData-img' mode='widthFix'></image>
     <view>本月还没有记账</view>
     <view>快去创建你的第一笔账吧~</view>
   </view>
