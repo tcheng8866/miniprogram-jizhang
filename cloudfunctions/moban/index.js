@@ -1,9 +1,7 @@
 const cloud = require('wx-server-sdk')
 cloud.init()
 exports.main = async (event, context) => {
-
   let { OPENID, APPID, UNIONID } = cloud.getWXContext()
-
   try {
     const result = await cloud.openapi.templateMessage.send({
       touser: OPENID,

@@ -28,7 +28,6 @@ Component({
       value: false,
     }
   },
-
   /**
    * 组件的初始数据
    */
@@ -83,10 +82,8 @@ Component({
           }, 300)
         })
       }
-
     },
     selectDay(e) {
-
       let index = e.currentTarget.dataset.index;
       let week = e.currentTarget.dataset.week;
       let ischeck = e.currentTarget.dataset.ischeck;
@@ -95,10 +92,8 @@ Component({
       let month = canlender.weeks[week][index].month < 10 ? "0" + canlender.weeks[week][index].month : canlender.weeks[week][index].month
       let date = canlender.weeks[week][index].date < 10 ? "0" + canlender.weeks[week][index].date : canlender.weeks[week][index].date
       this.getWeek(canlender.year + "-" + month + "-" + date);
-
     },
     packup() {
-
       let self = this;
       if (this.data.isOpen) {
         let year = self.data.canlender.year + "-" + self.data.canlender.month + "-" + self.data.canlender.date
@@ -127,7 +122,6 @@ Component({
     dataBefor(e) {
       let num = 0;
       let types = e.currentTarget.dataset.type;
-
       if (e.currentTarget.dataset.id === "0") {
         num = -1;
       } else {
@@ -161,7 +155,6 @@ Component({
         endDay: new Date(year, month, 0).getDay(),
         weeks: []
       }
-
       // 循环上个月末尾几天添加到数组
       for (let i = dates.firstDay; i > 0; i--) {
         dates.lastMonthDays.push({
@@ -174,7 +167,6 @@ Component({
         let have = false;
         for (let j = 0; j < selected.length; j++) {
           let selDate = selected[j].date.split('-');
-
           if (Number(year) === Number(selDate[0]) && Number(month) === Number(selDate[1]) && Number(i) === Number(selDate[2])) {
             have = true;
           }
@@ -192,7 +184,6 @@ Component({
           'month': month + 1
         })
       }
-
       canlender = canlender.concat(dates.lastMonthDays, dates.currentMonthDys, dates.nextMonthDays)
       // 拼接数组  上个月开始几天 + 本月天数+ 下个月开始几天
       for (let i = 0; i < canlender.length; i++) {
@@ -201,8 +192,6 @@ Component({
         }
         dates.weeks[parseInt(i / 7)][i % 7] = canlender[i]
       }
-
-
       // 渲染数据
       this.setData({
         selectDay: month + "月" + date + "日",
