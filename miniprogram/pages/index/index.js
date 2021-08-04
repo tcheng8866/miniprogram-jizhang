@@ -2,6 +2,7 @@ const db = wx.cloud.database();
 const priveTable = db.collection("priveTable");
 var that;
 var query;
+
 Page({
   data: {
     shuaixuanimg: [
@@ -82,17 +83,19 @@ Page({
         }
       }
       that.setData({ dataList: data }); //更新视图
-      that.totalPricefun();             //计算当前月份（总支出）（总收入） //处理金钱格式 如.前面数字变大，后面变小(0.oo)
+      that.totalPricefun();   //计算当前月份（总支出）（总收入） //处理金钱格式 如.前面数字变大，后面变小(0.oo)
     }).catch(err => {
       console.log(err);
       wx.hideLoading();
       // that.getDataList();
     })
   },
-  bindDateChange: function (e) {    //选择日期监听
+  //选择日期监听
+  bindDateChange: function (e) {
     var e = e.detail.value;
     var index = e.indexOf("-");
-    if (e !== (that.data.year + that.data.month)) {  //如果选中的年月跟当前的不相等就重新加载数据
+    if (e !== (that.data.year + that.data.month)) {
+      //如果选中的年月跟当前的不相等就重新加载数据
       this.setData({      //跟新选中的年月
         year: e.substring(0, index),
         month: e.substring(index + 1, e.length)
@@ -111,7 +114,8 @@ Page({
     }
     return total.toFixed(2);
   },
-  gettotalsr() {  //算出当前月份总收入金额
+  //算出当前月份总收入金额
+  gettotalsr() {
     let total = 0;
     for (let item of that.data.dataList) {
       for (let items of item.dataList) {
@@ -122,7 +126,8 @@ Page({
     }
     return total.toFixed(2);
   },
-  totalPricefun() { //处理金钱格式 如.前面数字变大，后面变小(0.oo)
+  //处理金钱格式 如.前面数字变大，后面变小(0.oo)
+  totalPricefun() {
     that.priceq(that.gettotalsr(), function (q) { that.setData({ s: q }) });
     that.priceh(that.gettotalsr(), function (h) { that.setData({ r: h }) });
     that.priceq(that.gettotalzc(), function (q) { that.setData({ z: q }) });
