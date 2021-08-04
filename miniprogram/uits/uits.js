@@ -1,4 +1,5 @@
-var oneDay = function (y, m, d){
+// 获取星期几 入参 年月日
+var getWeek = function (y, m, d) {
   var myDate = new Date();
   myDate.setFullYear(y, m - 1, d);
   var week = myDate.getDay()
@@ -19,14 +20,16 @@ var oneDay = function (y, m, d){
       return '星期六';
   }
 };
-var getTime = function(){
-    var year = new Date().getFullYear();
-    var month = (new Date().getMonth() + 1).toString().length == 1 ? "0" + (new Date().getMonth() + 1).toString() : (new Date().getMonth() + 1).toString();
-    var date = (new Date().getDate()).toString().length == 1 ? "0" + (new Date().getDate()).toString() : (new Date().getDate()).toString()
-    var str = year + "-" + month + "-" + date;
-    return str;
+// 获取当前时间 年-月-日
+var getCurDate = function () {
+  var year = new Date().getFullYear();
+  var month = (new Date().getMonth() + 1).toString().length == 1 ? "0" + (new Date().getMonth() + 1).toString() : (new Date().getMonth() + 1).toString();
+  var date = (new Date().getDate()).toString().length == 1 ? "0" + (new Date().getDate()).toString() : (new Date().getDate()).toString()
+  var str = year + "-" + month + "-" + date;
+  return str;
 };
-var getTimes = function(stat){
+// 获取当前时间  格式： 年-月 / 年-月-日 / 年-月-日 星期 / 
+var getCurDateFmt = function (stat) {
   var year = new Date().getFullYear();
   var month = (new Date().getMonth() + 1).toString().length == 1 ? "0" + (new Date().getMonth() + 1).toString() : (new Date().getMonth() + 1).toString();
   var date = (new Date().getDate()).toString().length == 1 ? "0" + (new Date().getDate()).toString() : (new Date().getDate()).toString()
@@ -42,7 +45,8 @@ var getTimes = function(stat){
     return str;
   }
 };
-var isLastDayOfMonth = function() {
+// 年份计算超过12月份处理
+var isLastDayOfMonth = function () {
   var flag = new Boolean(false);
   var date = new Date();
   var year = date.getFullYear();
@@ -61,10 +65,10 @@ var isLastDayOfMonth = function() {
   }
   return flag;
 }
+
 module.exports = {
-  oneDay,
-  getTime,
-  getTimes,
+  getWeek,
+  getCurDate,
+  getCurDateFmt,
   isLastDayOfMonth
 }
-//console.log(oneDay.oneDay("2019", "06", "09"))

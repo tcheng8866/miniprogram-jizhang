@@ -1,4 +1,6 @@
-const oneDay = require('../../uits/uits.js');
+import {
+  getWeek
+} from "../../uits/uits.js";
 var that;
 Page({
   /**
@@ -31,7 +33,7 @@ Page({
   bindgetdate(e) {
     let time = e.detail;
     console.log(time)
-    that.setData({ active: '', createdTime: time.year + "-" + time.month + "-" + time.date + " " + oneDay.oneDay(time.year, time.month, time.date) })
+    that.setData({ active: '', createdTime: time.year + "-" + time.month + "-" + time.date + " " + getWeek(time.year, time.month, time.date) })
     wx.showLoading({ title: '' })
     console.log("执行")
     wx.cloud.callFunction({

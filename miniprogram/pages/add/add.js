@@ -1,4 +1,8 @@
-const oneDay = require('../../uits/uits.js');
+import {
+  getWeek,
+  getCurDateFmt,
+} from "../../uits/uits.js";
+
 const db = wx.cloud.database();
 const _ = db.command;
 const priveTable = db.collection("priveTable");
@@ -14,7 +18,8 @@ Page({
     btnlodingstatue: false,
     formSubmit: "formSubmit",
     end: new Date().getFullYear() + "-" + (new Date().getMonth() + 1).toString() + "-" + (new Date().getDate()).toString(),
-    date: '今天',
+    // date: '今天',
+    date: getCurDateFmt('年月日星期'),
     year: (new Date().getFullYear()).toString(),
     month: (new Date().getMonth() + 1).toString(),
     day: (new Date().getDate()).toString(),
@@ -73,7 +78,6 @@ Page({
     var formId = e.detail.formId;
     var e = e.detail.value;
     if (that.data.formData[0].value !== "" && that.data.formData[1].value !== "") {
-      console.log("执行")
       that.setData({ btnlodingstatue: true, formSubmit: '', formId: formId });
       var obj = {
         prive: that.data.formData[1].value,
@@ -81,10 +85,11 @@ Page({
         status: that.data.options.status,
         icon: "../../images/" + that.data.iconStatus0[that.data.idx].name
       }
+      // 云函数新增日期
       wx.cloud.callFunction({
         name: 'addListData',
         data: {
-          createdTime: that.data.date == "今天" ? that.getTime("年月日星期") : that.data.date + " " + oneDay.oneDay(that.data.year, that.data.month, that.data.day)
+          createdTime: that.data.date == "今天" ? getCurDateFmt("年月日星期") : that.data.date + " " + getWeek(that.data.year, that.data.month, that.data.day)
         }
       }).then(res => {
         console.log(res)
@@ -95,10 +100,11 @@ Page({
           var year = date.split("-");
           console.log(year)
           if (year[0] == "今天") { console.log(new Date().getFullYear()) }
+          // 前端操作云数据库  添加日期
           priveTable.add({
             data: {
-              createdTime: that.data.date == "今天" ? that.getTime("年月日星期") : that.data.date + " " + oneDay.oneDay(that.data.year, that.data.month, that.data.day),
-              timeDaty: that.data.date == "今天" ? that.getTime("年月") : that.data.YM,
+              createdTime: that.data.date == "今天" ? getCurDateFmt("年月日星期") : that.data.date + " " + getWeek(that.data.year, that.data.month, that.data.day),
+              timeDaty: that.data.date == "今天" ? getCurDateFmt("年月") : that.data.YM,
               year: year[0] == "今天" ? (new Date().getFullYear()).toString() : year[0],
               dataList: [],
             }
@@ -131,7 +137,7 @@ Page({
       keyword1: { value: obj.status == 0 ? "支出" : "收入" },//记账类型
       keyword2: { value: obj.prive },//金额
       keyword3: { value: obj.remark },//原因备注
-      keyword4: { value: that.getTime("年月日星期") },//记账时间
+      keyword4: { value: getCurDateFmt("年月日星期") },//记账时间
     }
     priveTable.doc(_id).update({
       data: {
@@ -173,42 +179,22 @@ Page({
     }).then(res => { console.log("模板成功回调"); console.log(res) })
       .catch(err => { console.log("模板失败回调"); console.log(err) })
   },
-  getTime(stat) {  //返回 （年月日星期） 2019-06-06 星期一
-    var year = new Date().getFullYear();
-    var month = (new Date().getMonth() + 1).toString().length == 1 ? "0" + (new Date().getMonth() + 1).toString() : (new Date().getMonth() + 1).toString();
-    var date = (new Date().getDate()).toString().length == 1 ? "0" + (new Date().getDate()).toString() : (new Date().getDate()).toString()
-    var day = new Date().getDay() == 0 ? "星期日" : new Date().getDay() == 1 ? "星期一" : new Date().getDay() == 2 ? "星期二" : new Date().getDay() == 3 ? "星期三" : new Date().getDay() == 4 ? "星期四" : new Date().getDay() == 5 ? "星期五" : "星期六";
-    if (stat == "年月日星期") {
-      let str = year + "-" + month + "-" + date + " " + day;
-      return str;
-    } else if (stat == "年月日") {
-      let str = year + "-" + month + "-" + date
-      return str;
-    } else {
-      let str = year + "-" + month;
-      return str;
-    }
-  },
   imgfun(e) {
     var e = e.currentTarget.dataset.index;
     this.setData({ idx: e })
   },
   bindDateChange: function (e) {
     var value = e.detail.value;
-    if (value == that.getTime("年月日")) {
-      this.setData({ date: '今天' })
-    } else {
-      this.setData({ date: value })
-      var YM = value.split("-");
-      this.setData({
-        date: value,
-        YM: YM[0] + "-" + YM[1],
-        year: YM[0],
-        month: YM[1],
-        day: YM[2],
-      });
-      console.log(that.data.date + " " + oneDay.oneDay(YM[0], YM[1], YM[2]));
-      console.log(that.data.YM)
-    }
+    this.setData({ date: value })
+    var YM = value.split("-");
+    this.setData({
+      date: value,
+      YM: YM[0] + "-" + YM[1],
+      year: YM[0],
+      month: YM[1],
+      day: YM[2],
+    });
+    console.log(that.data.date + " " + getWeek(YM[0], YM[1], YM[2]));
+    console.log(that.data.YM)
   },
 })
