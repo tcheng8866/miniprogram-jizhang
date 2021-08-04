@@ -2,24 +2,11 @@
   "pages": [
     "pages/test/test",
     "pages/iconListData/iconListData",
-    "pages/uploadFile/uploadFile",
-    "pages/mobantesst/mobantesst",
     "pages/rili/rili",
     "pages/zhangdan/zhangdan",
     "pages/test/zc/zc",
     "pages/test/exit/exit",
-    "pages/test/detail/detail",
-    "pages/index/index",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
-    "pages/openapi/openapi",
-    "pages/openapi/serverapi/serverapi",
-    "pages/openapi/callback/callback",
-    "pages/openapi/cloudid/cloudid"
+    "pages/test/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

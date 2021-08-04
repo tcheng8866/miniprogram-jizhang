@@ -1,3 +1,0 @@
-<form report-submit="true" bindsubmit="bindsubmit">
-  <button form-type="submit">发送测试模板</button>
-</form>

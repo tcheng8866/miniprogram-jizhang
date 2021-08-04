@@ -131,7 +131,8 @@ Page({
         
         'formData[1].labelStyle': 'font-size:26rpx; top:20rpx;', 'formData[1].inputStyle': 'top:26rpx;' ,
 
-        date: ymd == oneDay.getTime() ? "今天" : ymd,
+        // date: ymd == oneDay.getTime() ? "今天" : ymd,
+        date: ymd == oneDay.getTime() ? ymd : ymd,
 
         createdTime: res.data.createdTime,
 

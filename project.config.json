@@ -37,7 +37,7 @@
     "showES6CompileOption": false
   },
   "appid": "wx089e8a82e112b645",
-  "projectname": "%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91",
+  "projectname": "jizhangCloud",
   "libVersion": "2.7.7",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
@@ -58,8 +58,8 @@
       "list": [
         {
           "id": -1,
-          "name": "db guide",
-          "pathName": "pages/databaseGuide/databaseGuide"
+          "name": "test guide",
+          "pathName": "pages/test/test"
         }
       ]
     }

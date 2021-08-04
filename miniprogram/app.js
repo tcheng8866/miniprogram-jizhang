@@ -1,7 +1,6 @@
 //app.js
 App({
   onLaunch: function () {
-    
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
@@ -10,9 +9,7 @@ App({
         traceUser: true,
       })
     }
-
-    this.globalData = {};
-
+    // 版本升级【云开发版本】
     if (wx.canIUse("getUpdateManager")) {
       let updateManager = wx.getUpdateManager();
       updateManager.onCheckForUpdate((res) => {

@@ -12,9 +12,9 @@ Page({
 
   data: {
 
-    iconStatus0:[],
+    iconStatus0: [],
 
-    idx:0,
+    idx: 0,
 
     formData: [
 
@@ -38,7 +38,7 @@ Page({
 
     day: (new Date().getDate()).toString(),
 
-    formId:''
+    formId: ''
 
   },
 
@@ -75,7 +75,7 @@ Page({
 
       })
 
-    }else{                    //否则展示收入的图标
+    } else {                    //否则展示收入的图标
 
       this.setData({
 
@@ -132,7 +132,7 @@ Page({
 
     }
 
-    this.setData({ 
+    this.setData({
 
       ["formData[" + index + "].value"]: value,
 
@@ -146,10 +146,10 @@ Page({
     console.log(e)
 
     var formId = e.detail.formId;
-    
+
     var e = e.detail.value;
 
-    if (that.data.formData[0].value !== "" && that.data.formData[1].value !== ""){
+    if (that.data.formData[0].value !== "" && that.data.formData[1].value !== "") {
 
       console.log("执行")
 
@@ -163,7 +163,7 @@ Page({
 
         status: that.data.options.status,
 
-        icon: "../../images/"+that.data.iconStatus0[that.data.idx].name
+        icon: "../../images/" + that.data.iconStatus0[that.data.idx].name
 
       }
 
@@ -171,21 +171,21 @@ Page({
 
         name: 'addListData',
 
-        data:{
+        data: {
 
           createdTime: that.data.date == "今天" ? that.getTime("年月日星期") : that.data.date + " " + oneDay.oneDay(that.data.year, that.data.month, that.data.day)
 
         }
 
-      }).then(res =>{
+      }).then(res => {
 
         console.log(res)
 
-        if (res.result.data.length !== 0){
+        if (res.result.data.length !== 0) {
 
-          that.addfun(res.result.data[0]._id,obj);
+          that.addfun(res.result.data[0]._id, obj);
 
-        }else{
+        } else {
 
           var date = that.data.date;
 
@@ -193,7 +193,7 @@ Page({
 
           console.log(year)
 
-          if(year[0] == "今天"){ console.log(new Date().getFullYear()) }
+          if (year[0] == "今天") { console.log(new Date().getFullYear()) }
 
           priveTable.add({
 
@@ -223,11 +223,11 @@ Page({
 
         }
 
-        }).catch(err => { console.log(err); that.formSubmit(); })
+      }).catch(err => { console.log(err); that.formSubmit(); })
 
-    }else{
+    } else {
 
-      if (that.data.formData[0].value == ""){
+      if (that.data.formData[0].value == "") {
 
         wx.showToast({
 
@@ -239,7 +239,7 @@ Page({
 
         });
 
-      }else{
+      } else {
 
         wx.showToast({
 
@@ -258,10 +258,10 @@ Page({
   },
 
 
-  addfun(_id, obj){
+  addfun(_id, obj) {
 
     var keyworddata = {
-      keyword1: { value: obj.status == 0?"支出":"收入" },//记账类型
+      keyword1: { value: obj.status == 0 ? "支出" : "收入" },//记账类型
       keyword2: { value: obj.prive },//金额
       keyword3: { value: obj.remark },//原因备注
       keyword4: { value: that.getTime("年月日星期") },//记账时间
@@ -295,11 +295,11 @@ Page({
 
         var pages = getCurrentPages();
 
-        var currPage = pages[pages.length - 1]; 
+        var currPage = pages[pages.length - 1];
 
-        var prevPage = pages[pages.length - 2]; 
+        var prevPage = pages[pages.length - 2];
 
-        prevPage.setData({ state: true, year: that.data.year, month:that.data.month });
+        prevPage.setData({ state: true, year: that.data.year, month: that.data.month });
 
         prevPage.getDataList();
 
@@ -328,7 +328,7 @@ Page({
   },
 
 
-  sendMoban(keyworddata){
+  sendMoban(keyworddata) {
 
     wx.cloud.callFunction({
 
@@ -347,7 +347,7 @@ Page({
   },
 
 
-  getTime(stat){  //返回 （年月日星期） 2019-06-06 星期一
+  getTime(stat) {  //返回 （年月日星期） 2019-06-06 星期一
 
     var year = new Date().getFullYear();
 
@@ -357,19 +357,19 @@ Page({
 
     var day = new Date().getDay() == 0 ? "星期日" : new Date().getDay() == 1 ? "星期一" : new Date().getDay() == 2 ? "星期二" : new Date().getDay() == 3 ? "星期三" : new Date().getDay() == 4 ? "星期四" : new Date().getDay() == 5 ? "星期五" : "星期六";
 
-    if (stat == "年月日星期"){
+    if (stat == "年月日星期") {
 
       let str = year + "-" + month + "-" + date + " " + day;
 
       return str;
 
-    } else if (stat == "年月日"){
+    } else if (stat == "年月日") {
 
       let str = year + "-" + month + "-" + date
 
       return str;
 
-    }else{
+    } else {
 
       let str = year + "-" + month;
 
@@ -380,11 +380,11 @@ Page({
   },
 
 
-  imgfun(e){
+  imgfun(e) {
 
     var e = e.currentTarget.dataset.index;
 
-    this.setData({ idx:e })
+    this.setData({ idx: e })
 
   },
 
@@ -393,28 +393,28 @@ Page({
 
     var value = e.detail.value;
 
-    if (value == that.getTime("年月日")){
+    if (value == that.getTime("年月日")) {
 
       this.setData({ date: '今天' })
 
-    }else{
+    } else {
 
       this.setData({ date: value })
 
       var YM = value.split("-");
-  
-      this.setData({ 
-        
+
+      this.setData({
+
         date: value,
-        
-        YM:YM[0] + "-" + YM[1],
-         
-        year: YM[0], 
 
-        month: YM[1], 
+        YM: YM[0] + "-" + YM[1],
 
-        day: YM[2], 
-         
+        year: YM[0],
+
+        month: YM[1],
+
+        day: YM[2],
+
       });
 
       console.log(that.data.date + " " + oneDay.oneDay(YM[0], YM[1], YM[2]));
