@@ -65,7 +65,7 @@ Page({
           'formData[1].value': data.prive,
           'formData[0].labelStyle': 'font-size:26rpx; top:20rpx;', 'formData[0].inputStyle': 'top:26rpx;',
           'formData[1].labelStyle': 'font-size:26rpx; top:20rpx;', 'formData[1].inputStyle': 'top:26rpx;',
-          date: ymd == ymd,
+          date: ymd,
           createdTime: res.data.createdTime,
           year: res.data.year,
           YM: res.data.timeDaty
