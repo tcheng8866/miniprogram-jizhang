@@ -15,33 +15,32 @@ Page({
     console.log(options)
 
     that = this;
-
-    this.setData({ options:options })
+    
+    this.setData({ options: options })
 
   },
 
-  onShow(){
+  onShow() {
 
     this.getdataList();
 
   },
 
 
-  getdataList(){
-
+  getdataList() {
     priveTable.doc(that.data.options._id).get()
-    .then(res =>{
+      .then(res => {
 
-      console.log(res.data.dataList)
+        console.log(res.data.dataList)
 
-      that.setData({ listData:res.data});
+        that.setData({ listData: res.data });
 
-    }).catch(err =>{ console.log(err) })
+      }).catch(err => { console.log(err) })
 
   },
 
 
-  deletefun(){
+  deletefun() {
 
     wx.showModal({
 
@@ -49,7 +48,7 @@ Page({
 
       content: '删除后数据不可恢复!',
 
-      confirmColor:'#F80C02',
+      confirmColor: '#F80C02',
 
       success(res) {
 
@@ -57,7 +56,7 @@ Page({
 
           var index = Number(that.data.options.index);
 
-          that.data.listData.dataList.splice(index,1);
+          that.data.listData.dataList.splice(index, 1);
 
           priveTable.doc(that.data.options._id).update({
 
@@ -108,13 +107,13 @@ Page({
         }
 
       }
-      
+
     })
 
   },
 
 
-  exitfun(){
+  exitfun() {
 
     wx.navigateTo({
 

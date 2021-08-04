@@ -2,5 +2,5 @@
   "usingComponents": {
     "calendar": "/components/calendar/calendar"
   },
-  "navigationBarBackgroundColor": "#FADA63"
+  "navigationBarTitleText": "明细"
 }

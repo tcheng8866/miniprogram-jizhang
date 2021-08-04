@@ -1,16 +1,17 @@
 {
   "pages": [
-    "pages/test/test",
+    "pages/index/index",
+    "pages/record/record",
+    "pages/count/count",
     "pages/iconListData/iconListData",
-    "pages/rili/rili",
-    "pages/zhangdan/zhangdan",
-    "pages/test/zc/zc",
-    "pages/test/exit/exit",
-    "pages/test/detail/detail"
+    "pages/zc/zc",
+    "pages/exit/exit",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarTitleText": "记账本",
+    "navigationBarBackgroundColor": "#FADA63",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"

@@ -1,4 +1,4 @@
-const oneDay = require('../../../uits/uits.js');
+const oneDay = require('../../uits/uits.js');
 
 const db = wx.cloud.database();
 
@@ -55,21 +55,21 @@ Page({
 
         iconStatus0: [
 
-          { src: '../../../images/mr.png', title: '默认', name: 'mr.png' },
+          { src: '../../images/mr.png', title: '默认', name: 'mr.png' },
 
-          { src: '../../../images/cy.png', title: '餐饮', name: 'cy.png' },
+          { src: '../../images/cy.png', title: '餐饮', name: 'cy.png' },
 
-          { src: '../../../images/fs.png', title: '服饰', name: 'fs.png' },
+          { src: '../../images/fs.png', title: '服饰', name: 'fs.png' },
 
-          { src: '../../../images/gw.png', title: '购物', name: 'gw.png' },
+          { src: '../../images/gw.png', title: '购物', name: 'gw.png' },
 
-          { src: '../../../images/jt.png', title: '交通', name: 'jt.png' },
+          { src: '../../images/jt.png', title: '交通', name: 'jt.png' },
 
-          { src: '../../../images/yj.png', title: '烟酒', name: 'yj.png' },
+          { src: '../../images/yj.png', title: '烟酒', name: 'yj.png' },
 
-          { src: '../../../images/yl.png', title: '娱乐', name: 'yl.png' },
+          { src: '../../images/yl.png', title: '娱乐', name: 'yl.png' },
 
-          { src: '../../../images/qt.png', title: '其他', name: 'qt.png' }
+          { src: '../../images/qt.png', title: '其他', name: 'qt.png' }
 
         ]
 
@@ -81,11 +81,11 @@ Page({
 
         iconStatus0: [
 
-          { src: '../../../images/mr.png', title: '默认', name: 'mr.png' },
+          { src: '../../images/mr.png', title: '默认', name: 'mr.png' },
 
-          { src: '../../../images/gz.png', title: '工资', name: 'gz.png' },
+          { src: '../../images/gz.png', title: '工资', name: 'gz.png' },
 
-          { src: '../../../images/qt.png', title: '其他', name: 'qt.png' }
+          { src: '../../images/qt.png', title: '其他', name: 'qt.png' }
 
         ]
 

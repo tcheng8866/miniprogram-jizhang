@@ -9,8 +9,8 @@ var query;
 Page({
 
   data: {
-    
-    shuaixuanimg:[
+
+    shuaixuanimg: [
       { "img": "../../images/mr.png", "text": "默认" },
       { "img": "../../images/cy.png", "text": "餐饮" },
       { "img": "../../images/fs.png", "text": "服饰" },
@@ -40,16 +40,16 @@ Page({
 
     state: false,  //操作滚动条到顶部的状态
 
-    tjimg:'../../images/tj-h.png',
+    tjimg: '../../images/tj-h.png',
 
-    tjStyle:'',
+    tjStyle: '',
 
-    mximg:'../../images/rl-h.png',
+    mximg: '../../images/rl-h.png',
 
-    mxStyle:'',
+    mxStyle: '',
 
-    stopPageScroll:''
-    
+    stopPageScroll: ''
+
   },
 
   onReady() {
@@ -65,7 +65,7 @@ Page({
 
   onShow() {
 
-    this.setData({ tjimg: '../../images/tj-h.png', mximg: '../../images/rl-h.png', mxStyle: '',tjStyle:'' })
+    this.setData({ tjimg: '../../images/tj-h.png', mximg: '../../images/rl-h.png', mxStyle: '', tjStyle: '' })
 
     if (this.data.state) { wx.pageScrollTo({ scrollTop: 0 }); this.setData({ state: false }) }
 
@@ -90,21 +90,21 @@ Page({
       name: 'getListData',          //云函数名称
 
       data: {                       //参数为当前年月的数据 （格式：2019-06）
-        
+
         timeDaty: that.data.year + "-" + (that.data.month.length == 1 ? "0" + that.data.month : that.data.month)
 
       }
 
     }).then(res => {
-
+      wx.hideLoading();                 //隐藏loading
       console.log(res)
 
       var data = res.result.data;
 
       console.log(data)
 
-      if(data.length !== 0){
-        
+      if (data.length !== 0) {
+
         var JL = 0;
 
         for (var i in data) {
@@ -113,18 +113,18 @@ Page({
 
           var zhichu = 0;
 
-          if (data[i].dataList.length !== 0) { 
-            
+          if (data[i].dataList.length !== 0) {
+
             JL += 1;
-            
+
           }
 
-          if(data.length-1 == i){         //到最后一次循环如果JL=0就删除掉这条数据，因为这条数据里面没有子数据
+          if (data.length - 1 == i) {         //到最后一次循环如果JL=0就删除掉这条数据，因为这条数据里面没有子数据
 
             if (JL === 0) { priveTable.doc(data[i]._id).remove({}).then(res => { that.getDataList() }).catch(err => { console.log(err) }) }
 
           }
-          
+
           for (var j in data[i].dataList) {
 
             if (data[i].dataList[j].status == 0) {
@@ -149,8 +149,6 @@ Page({
 
       that.setData({ dataList: data }); //更新视图
 
-      wx.hideLoading();                 //隐藏loading
-
       that.totalPricefun();             //计算当前月份（总支出）（总收入） //处理金钱格式 如.前面数字变大，后面变小(0.oo)
 
     }).catch(err => {
@@ -159,7 +157,7 @@ Page({
 
       wx.hideLoading();
 
-      that.getDataList();
+      // that.getDataList();
 
     })
 
@@ -172,11 +170,11 @@ Page({
 
     var index = e.indexOf("-");
 
-    if (e !== (that.data.year + that.data.month)){  //如果选中的年月跟当前的不相等就重新加载数据
+    if (e !== (that.data.year + that.data.month)) {  //如果选中的年月跟当前的不相等就重新加载数据
 
       this.setData({      //跟新选中的年月
 
-        year: e.substring(0, index),            
+        year: e.substring(0, index),
 
         month: e.substring(index + 1, e.length)
 
@@ -273,7 +271,7 @@ Page({
 
   zcfun(e) {
 
-    wx.navigateTo({ url: 'zc/zc?status=0' });  //跳转记账页面 参数status = 0 是支出的状态
+    wx.navigateTo({ url: '../zc/zc?status=0' });  //跳转记账页面 参数status = 0 是支出的状态
 
     this.setData({ addimgStyle: '', menuStyle: 'transform: rotate(180deg);transition: all .3s;' });
 
@@ -284,7 +282,7 @@ Page({
 
   srfun(e) {
 
-    wx.navigateTo({ url: 'zc/zc?status=1' });   //跳转记账页面 参数status = 1 是收入的状态
+    wx.navigateTo({ url: '../zc/zc?status=1' });   //跳转记账页面 参数status = 1 是收入的状态
 
     this.setData({ addimgStyle: '', menuStyle: 'transform: rotate(180deg);transition: all .3s;' });
 
@@ -298,10 +296,9 @@ Page({
     var index = e.currentTarget.dataset.index;
 
     var _id = e.currentTarget.dataset.id;
-
     wx.navigateTo({
 
-      url: 'detail/detail?_id=' + _id + '&index=' + index, //跳转详情页 参数是数据的id index是索引，用索引获取该数据的子数据
+      url: '../detail/detail?_id=' + _id + '&index=' + index, //跳转详情页 参数是数据的id index是索引，用索引获取该数据的子数据
 
     })
 
@@ -341,35 +338,35 @@ Page({
 
   },
 
-  
-  mxfun(){
+
+  mxfun() {
 
     wx.vibrateShort();
 
     this.setData({ mximg: "../../images/rl.png", mxStyle: 'color: #FADA63;' })
 
-    wx.navigateTo({ url: '../rili/rili' })
+    wx.navigateTo({ url: '../record/record' })
 
   },
 
 
-  tjfun(){
+  tjfun() {
 
     wx.vibrateShort();
 
     this.setData({ tjimg: '../../images/tj.png', tjStyle: 'color: #FADA63;' })
 
-    wx.navigateTo({ url: '../zhangdan/zhangdan' })
+    wx.navigateTo({ url: '../count/count' })
 
   },
 
-  shuaixuanfun(){
+  shuaixuanfun() {
 
-    this.setData({ stopPageScroll: "stopPageScroll", shuaixuanboxBottom:'bottom:0' })
+    this.setData({ stopPageScroll: "stopPageScroll", shuaixuanboxBottom: 'bottom:0' })
 
   },
 
-  close(){
+  close() {
 
     this.setData({ stopPageScroll: '', shuaixuanboxBottom: 'bottom:-100%' })
 
@@ -378,7 +375,7 @@ Page({
   },
 
 
-  goimgfun(e){
+  goimgfun(e) {
     console.log(e.currentTarget.dataset.img)
     wx.navigateTo({
       url: '../iconListData/iconListData?img=' + e.currentTarget.dataset.img,
