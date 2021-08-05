@@ -47,6 +47,7 @@ Page({
         iconStatus0: [
           { src: '../../images/mr.png', title: '默认', name: 'mr.png' },
           { src: '../../images/gz.png', title: '工资', name: 'gz.png' },
+          { src: '../../images/lc.png', title: '理财', name: 'lc.png' },
           { src: '../../images/qt.png', title: '其他', name: 'qt.png' }
         ]
       })

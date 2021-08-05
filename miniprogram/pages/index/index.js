@@ -14,6 +14,7 @@ Page({
       { "img": "../../images/yj.png", "text": "烟酒" },
       { "img": "../../images/yl.png", "text": "娱乐" },
       { "img": "../../images/gz.png", "text": "工资" },
+      { "img": "../../images/lc.png", "text": "理财" },
       { "img": "../../images/qt.png", "text": "其他" },
     ],
     dataList: [],   //数据

@@ -109,6 +109,8 @@ page{
   font-size: 28rpx;
   padding-right: 30rpx;
   color: #352302;
+  width: 150rpx;
+  text-align: right;
 }
 .bottom-box{
   background: #fff;
