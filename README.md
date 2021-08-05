@@ -1,7 +1,1 @@
-    "pages/test/test",    首页
-    "pages/iconListData/iconListData",   排行榜
-    "pages/rili/rili",  日历
-    "pages/zhangdan/zhangdan",  账单
-    "pages/test/zc/zc",
-    "pages/test/edit/edit",
-    "pages/test/detail/detail",
+云开发数据库priveTable表需要先创建一条数据
