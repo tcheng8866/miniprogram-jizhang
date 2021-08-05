@@ -1,6 +1,6 @@
 <view class="top-box">
   <view class="section">
-    <picker mode="date" fields="year" value="{{date}}" start="2015" end="{{end}}" bindchange="bindDateChange">
+    <picker mode="date" fields="year" value="{{date}}" bindchange="bindDateChange">
       <view class="picker">
       {{date}}年
       <image src="/images/dsj.png" class="dsj"></image>

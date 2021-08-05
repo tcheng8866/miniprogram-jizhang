@@ -7,7 +7,7 @@
 <view style="height:168rpx;"></view>
 <view class="time-zc-sr">
   <view class="section">
-    <picker mode="date" fields="month" value="{{date}}" start="2015-09-01" end="{{end}}" bindchange="bindDateChange">
+    <picker mode="date" fields="month" value="{{date}}" bindchange="bindDateChange">
       <view class="picker">
         {{date}}
       </view>

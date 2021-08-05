@@ -11,7 +11,7 @@
   </block>
   <view class='input-box'>
     <label style="font-size:32rpx; top:20rpx;">时间</label>
-    <picker mode="date" value="{{date}}" start="2015-09-01" end="{{end}}" bindchange="bindDateChange" style="padding-left:20rpx">
+    <picker mode="date" value="{{date}}" bindchange="bindDateChange" style="padding-left:20rpx">
       <view class="picker">
       {{date}}
       </view>
