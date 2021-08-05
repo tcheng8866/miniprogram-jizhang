@@ -52,7 +52,7 @@ Page({
           })
         }
         for (var i in that.data.iconStatus0) {
-          if (data.icon.indexOf(that.data.iconStatus0.name) !== -1) {
+          if (data.icon.indexOf(that.data.iconStatus0[i].name) !== -1) {
             that.setData({ idx: i })
           }
         }
@@ -63,8 +63,8 @@ Page({
           data: data,
           'formData[0].value': data.remark,
           'formData[1].value': data.prive,
-          'formData[0].labelStyle': 'font-size:26rpx; top:20rpx;', 'formData[0].inputStyle': 'top:26rpx;',
-          'formData[1].labelStyle': 'font-size:26rpx; top:20rpx;', 'formData[1].inputStyle': 'top:26rpx;',
+          'formData[0].labelStyle': 'font-size:32rpx; top:20rpx;', 'formData[0].inputStyle': 'top:26rpx;',
+          'formData[1].labelStyle': 'font-size:32rpx; top:20rpx;', 'formData[1].inputStyle': 'top:26rpx;',
           date: ymd,
           createdTime: res.data.createdTime,
           year: res.data.year,

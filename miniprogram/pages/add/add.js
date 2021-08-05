@@ -99,8 +99,6 @@ Page({
         } else {
           var date = that.data.date;
           var year = date.split("-");
-          console.log(year)
-          if (year[0] == "今天") { console.log(new Date().getFullYear()) }
           // 前端操作云数据库  添加日期
           priveTable.add({
             data: {
