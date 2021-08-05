@@ -4,8 +4,10 @@
     <view class='navtop02 {{active02}}' bindtap='zhichufun'>年</view>
   </view>
 </view>
-<view style="height:168rpx;"></view>
-<view class="time-zc-sr">
+<view style="height:168rpx;" wx:if="{{active01}}"></view>
+<view style="height:16rpx;" wx:if="{{active02}}"></view>
+
+<view class="time-zc-sr" wx:if="{{active01}}">
   <view class="section">
     <picker mode="date" fields="month" value="{{date}}" bindchange="bindDateChange">
       <view class="picker">

@@ -95,8 +95,8 @@
   <scroll-view scroll-y="true" style="height:100%;">
     <image src="/images/close.png" class="close" bindtap="close"></image>
     <view class="shuaixuan-box">
-      <block wx:for="{{shuaixuanimg}}" wx:key="key">
-        <view class="img-text" data-img="{{item.img}}" bindtap="goimgfun">
+      <block wx:for="{{shuaixuanTypeimg}}" wx:key="key">
+        <view class="img-text" data-status="{{item.status}}" bindtap="goimgfun">
           <image src="{{item.img}}"></image>
           <view>{{item.text}}</view>
         </view>

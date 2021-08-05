@@ -15,6 +15,10 @@ Page({
       { "img": "../../images/lc.png", "text": "理财" },
       { "img": "../../images/qt.png", "text": "其他" },
     ],
+    shuaixuanTypeimg: [
+      { "img": "../../images/gz.png", "text": "收入", "status": "1" },
+      { "img": "../../images/cy.png", "text": "支出", "status": "0"  }
+    ],
     dataList: [],   //数据
     year: new Date().getFullYear(),                 //当前年份
     month: (new Date().getMonth() + 1).toString(),  //当前月份
@@ -194,9 +198,8 @@ Page({
     console.log("执行")
   },
   goimgfun(e) {
-    console.log(e.currentTarget.dataset.img)
     wx.navigateTo({
-      url: '../sort/sort?img=' + e.currentTarget.dataset.img,
+      url: '../sort/sort?status=' + e.currentTarget.dataset.status
     })
     this.setData({ stopPageScroll: '', shuaixuanboxBottom: 'bottom:-100%' })
   },

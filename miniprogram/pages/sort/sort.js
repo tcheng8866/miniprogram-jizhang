@@ -6,16 +6,16 @@ Page({
   data: {
     listData: [],
     active01: 'active',
-    active0: '',
+    active02: '',
     end: new Date().getFullYear() + "-" + (new Date().getMonth() + 1).toString(), //选择时间不能超过当前年月份
     date: new Date().getFullYear() + "-" + ((new Date().getMonth() + 1).toString().length == 1 ? "0" + (new Date().getMonth() + 1).toString() : (new Date().getMonth() + 1).toString()),
   },
   onLoad: function (options) {
     this.setData({ options: options })
     that = this;
-    this.geticonListData(this.data.options.img);
+    this.geticonListData(this.data.options.status);
   },
-  geticonListData(icon) {
+  geticonListData(status) {
     wx.cloud.callFunction({
       name: 'allDataList'
     }).then(res => {
@@ -23,7 +23,7 @@ Page({
       var iconList = [];
       for (var i in res.result.data) {
         for (var j in res.result.data[i].dataList) {
-          if (res.result.data[i].dataList[j].icon == icon) {
+          if (res.result.data[i].dataList[j].status == status) {
             // res.result.data[i].dataList.splice(j,1);
             res.result.data[i].dataList[j].createdTime = res.result.data[i].createdTime;
             res.result.data[i].dataList[j].timeDaty = res.result.data[i].timeDaty;
