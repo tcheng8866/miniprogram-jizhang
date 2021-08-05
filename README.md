@@ -3,5 +3,5 @@
     "pages/rili/rili",  日历
     "pages/zhangdan/zhangdan",  账单
     "pages/test/zc/zc",
-    "pages/test/exit/exit",
+    "pages/test/edit/edit",
     "pages/test/detail/detail",

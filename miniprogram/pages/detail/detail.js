@@ -55,9 +55,9 @@ Page({
       }
     })
   },
-  exitfun() {
+  editfun() {
     wx.navigateTo({
-      url: '../exit/exit?_id=' + that.data.options._id + '&index=' + that.data.options.index + "&createdTime=" + that.data.options.createdTime,
+      url: '../edit/edit?_id=' + that.data.options._id + '&index=' + that.data.options.index + "&createdTime=" + that.data.options.createdTime,
     })
   }
 })

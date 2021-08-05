@@ -1,6 +1,6 @@
 <view class='navtop'>
-  <view class='navtop01 {{active01}}' bindtap='shourufun'>收入</view>
-  <view class='navtop02 {{active02}}' bindtap='zhichufun'>支出</view>
+  <view class='navtop01 {{active01}}'>收入</view>
+  <view class='navtop02 {{active02}}'>支出</view>
 </view>
 <form bindsubmit="{{formSubmit}}" bindreset="formReset">
   <block wx:for="{{formData}}" wx:key="key">

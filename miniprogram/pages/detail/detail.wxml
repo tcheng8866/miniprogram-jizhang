@@ -17,6 +17,6 @@
   </view>
 </view>
 <view class='bottombtn'>
-  <view bindtap='exitfun' style='border-right:4rpx solid #F7F7F7;'>编辑</view>
+  <view bindtap='editfun' style='border-right:4rpx solid #F7F7F7;'>编辑</view>
   <view bindtap='deletefun'>删除</view>
 </view>

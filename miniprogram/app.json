@@ -4,7 +4,7 @@
     "pages/record/record",
     "pages/count/count",
     "pages/add/add",
-    "pages/exit/exit",
+    "pages/edit/edit",
     "pages/detail/detail",
     "pages/sort/sort"
   ],
