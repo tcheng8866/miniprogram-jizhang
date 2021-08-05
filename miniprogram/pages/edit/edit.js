@@ -34,10 +34,8 @@ Page({
               { src: '../../images/mr.png', title: '默认', name: 'mr.png' },
               { src: '../../images/cy.png', title: '餐饮', name: 'cy.png' },
               { src: '../../images/fs.png', title: '服饰', name: 'fs.png' },
-              { src: '../../images/gw.png', title: '购物', name: 'gw.png' },
+              { src: '../../images/zf.png', title: '住房', name: 'zf.png' },
               { src: '../../images/jt.png', title: '交通', name: 'jt.png' },
-              { src: '../../images/yj.png', title: '烟酒', name: 'yj.png' },
-              { src: '../../images/yl.png', title: '娱乐', name: 'yl.png' },
               { src: '../../images/qt.png', title: '其他', name: 'qt.png' }
             ]
           })
@@ -208,10 +206,8 @@ Page({
         { src: '../../images/mr.png', title: '默认', name: 'mr.png' },
         { src: '../../images/cy.png', title: '餐饮', name: 'cy.png' },
         { src: '../../images/fs.png', title: '服饰', name: 'fs.png' },
-        { src: '../../images/gw.png', title: '购物', name: 'gw.png' },
+        { src: '../../images/zf.png', title: '住房', name: 'zf.png' },
         { src: '../../images/jt.png', title: '交通', name: 'jt.png' },
-        { src: '../../images/yj.png', title: '烟酒', name: 'yj.png' },
-        { src: '../../images/yl.png', title: '娱乐', name: 'yl.png' },
         { src: '../../images/qt.png', title: '其他', name: 'qt.png' }
       ],
       idx: 0
