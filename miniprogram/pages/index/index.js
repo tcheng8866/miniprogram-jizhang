@@ -18,7 +18,7 @@ Page({
     dataList: [],   //数据
     year: new Date().getFullYear(),                 //当前年份
     month: (new Date().getMonth() + 1).toString(),  //当前月份
-    q: 0,
+    q: 0, // 处理金钱格式 如.前面数字变大，后面变小(0.oo)
     h: 0,
     end: new Date().getFullYear() + "-" + (new Date().getMonth() + 1).toString(), //选择时间不能超过当前年月份
     addimgStyle: '',
