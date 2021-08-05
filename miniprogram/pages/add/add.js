@@ -19,8 +19,8 @@ Page({
     btnlodingstatue: false,
     formSubmit: "formSubmit",
     end: new Date().getFullYear() + "-" + (new Date().getMonth() + 1).toString() + "-" + (new Date().getDate()).toString(),
-    // date: '今天',
     date: getCurDate(),
+    YM: getCurDateFmt(),
     year: (new Date().getFullYear()).toString(),
     month: (new Date().getMonth() + 1).toString(),
     day: (new Date().getDate()).toString(),
@@ -89,10 +89,10 @@ Page({
       wx.cloud.callFunction({
         name: 'addListData',
         data: {
-          createdTime: that.data.date == "今天" ? getCurDateFmt("年月日星期") : that.data.date + " " + getWeek(that.data.year, that.data.month, that.data.day)
+          createdTime: that.data.date + " " + getWeek(that.data.year, that.data.month, that.data.day)
         }
       }).then(res => {
-        console.log(res)
+        console.log("add判断", res)
         if (res.result.data.length !== 0) {
           that.addfun(res.result.data[0]._id, obj);
         } else {
@@ -101,9 +101,9 @@ Page({
           // 前端操作云数据库  添加日期
           priveTable.add({
             data: {
-              createdTime: that.data.date == "今天" ? getCurDateFmt("年月日星期") : that.data.date + " " + getWeek(that.data.year, that.data.month, that.data.day),
-              timeDaty: that.data.date == "今天" ? getCurDateFmt("年月") : that.data.YM,
-              year: year[0] == "今天" ? (new Date().getFullYear()).toString() : year[0],
+              createdTime: that.data.date + " " + getWeek(that.data.year, that.data.month, that.data.day),
+              timeDaty: that.data.YM,
+              year: year[0],
               dataList: [],
             }
           }).then(res => {
