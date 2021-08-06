@@ -8,6 +8,9 @@ const db = wx.cloud.database();
 const _ = db.command;
 const priveTable = db.collection("priveTable");
 var that;
+
+var app = getApp();
+
 Page({
   data: {
     iconStatus0: [],
@@ -24,7 +27,9 @@ Page({
     year: (new Date().getFullYear()).toString(),
     month: (new Date().getMonth() + 1).toString(),
     day: (new Date().getDate()).toString(),
-    formId: ''
+    formId: '',
+    // nickName: app.globalData.userInfo.nickName,
+    // avatarUrl: app.globalData.userInfo.avatarUrl
   },
   onLoad(options) {
     that = this;
@@ -143,7 +148,6 @@ Page({
       }
     }).then(res => {
       if (res.errMsg == "document.update:ok") {
-        that.sendMoban(keyworddata);
         wx.showToast({
           title: '记账成功',
           icon: 'none',
@@ -151,7 +155,6 @@ Page({
         });
         setTimeout(() => { that.setData({ btnlodingstatue: false, formSubmit: 'formSubmit' }); wx.navigateBack({ delta: 1 }) }, 500)
         var pages = getCurrentPages();
-        var currPage = pages[pages.length - 1];
         var prevPage = pages[pages.length - 2];
         prevPage.setData({ state: true, year: that.data.year, month: that.data.month });
         prevPage.getDataList();
@@ -166,16 +169,6 @@ Page({
       console.log(err)
       that.formSubmit();
     })
-  },
-  sendMoban(keyworddata) {
-    wx.cloud.callFunction({
-      name: 'moban',
-      data: {
-        data: keyworddata,
-        formId: that.data.formId
-      }
-    }).then(res => { console.log("模板成功回调"); console.log(res) })
-      .catch(err => { console.log("模板失败回调"); console.log(err) })
   },
   imgfun(e) {
     var e = e.currentTarget.dataset.index;

@@ -2,7 +2,10 @@ var app = getApp();
 
 Page({
   data: {
-    userInfo: {},
+    userInfo: {
+      nickName: '',
+      avatarUrl: ''
+    },
     hasUserInfo: false,
     canIUseGetUserProfile: false,
   },
@@ -35,7 +38,7 @@ Page({
               console.log('成功！')
             }
           })
-        }, 2000)
+        }, 100)
       }
     })
   },
@@ -58,6 +61,6 @@ Page({
           console.log('成功！')
         }
       })
-    }, 2000)
+    }, 100)
   },
 })

@@ -150,7 +150,6 @@ Page({
     }
   },
   zcfun(e) {
-    debugger
     if (app.globalData.userInfo == null) {
       wx.navigateTo({ url: '../auth/auth' });
     } else {
@@ -160,9 +159,13 @@ Page({
     }
   },
   srfun(e) {
-    wx.navigateTo({ url: '../add/add?status=1' });   //跳转记账页面 参数status = 1 是收入的状态
-    this.setData({ addimgStyle: '', menuStyle: 'transform: rotate(180deg);transition: all .3s;' });
-    setTimeout(() => { this.setData({ addimgStyle: '', menuStyle: '' }); }, 300);
+    if (app.globalData.userInfo == null) {
+      wx.navigateTo({ url: '../auth/auth' });
+    } else {
+      wx.navigateTo({ url: '../add/add?status=1' });   //跳转记账页面 参数status = 1 是收入的状态
+      this.setData({ addimgStyle: '', menuStyle: 'transform: rotate(180deg);transition: all .3s;' });
+      setTimeout(() => { this.setData({ addimgStyle: '', menuStyle: '' }); }, 300);
+    }
   },
   goDetailfun(e) {
     var index = e.currentTarget.dataset.index;
