@@ -27,9 +27,7 @@ Page({
     year: (new Date().getFullYear()).toString(),
     month: (new Date().getMonth() + 1).toString(),
     day: (new Date().getDate()).toString(),
-    formId: '',
-    // nickName: app.globalData.userInfo.nickName,
-    // avatarUrl: app.globalData.userInfo.avatarUrl
+    formId: ''
   },
   onLoad(options) {
     that = this;
@@ -110,6 +108,8 @@ Page({
               timeDaty: that.data.YM,
               year: year[0],
               dataList: [],
+              nickName: app.globalData.userInfo.nickName,
+              avatarUrl: app.globalData.userInfo.avatarUrl
             }
           }).then(res => {
             that.addfun(res._id, obj);
@@ -136,12 +136,6 @@ Page({
     }
   },
   addfun(_id, obj) {
-    var keyworddata = {
-      keyword1: { value: obj.status == 0 ? "支出" : "收入" },//记账类型
-      keyword2: { value: obj.prive },//金额
-      keyword3: { value: obj.remark },//原因备注
-      keyword4: { value: getCurDateFmt("年月日星期") },//记账时间
-    }
     priveTable.doc(_id).update({
       data: {
         dataList: _.unshift(obj)

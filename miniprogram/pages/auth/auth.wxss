@@ -5,7 +5,7 @@ page{
 }
 .container {}
 
-.userinfo {
+.userInfo {
   padding: 50rpx;
 }
 
