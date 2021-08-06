@@ -1,0 +1,8 @@
+<view class="container">
+	<view class="start head">
+		<image src="{{userInfo.avatarUrl}}" class="avatar" title="用户图像" />
+		<button class="name" open-type="getUserInfo" hover-class='none' bindgetuserinfo="getUserInfoFun">{{userInfo.nickName}}</button>
+	</view>
+	<button class="btn" open-type="contact">联系客服</button>
+	<image src="/images/zanshang.jpg" style="width: 100%;" title="" />
+</view>

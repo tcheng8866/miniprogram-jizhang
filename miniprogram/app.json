@@ -7,7 +7,8 @@
     "pages/edit/edit",
     "pages/detail/detail",
     "pages/sort/sort",
-    "pages/auth/auth"
+    "pages/auth/auth",
+    "pages/user/user"
   ],
   "window": {
     "backgroundTextStyle": "light",

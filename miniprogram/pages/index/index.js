@@ -151,6 +151,10 @@ Page({
   },
   zcfun(e) {
     if (app.globalData.userInfo == null) {
+      // 2101年4月后上线小程序 getUserInfo 不会弹授权框、获取不到用户微信昵称（返回'微信用户'），之前上线的小程序不受影响
+      // 以前的获取一次，永久有效，除非用户取消授权
+      // 现在 每一次使用都要重新获取、所以要存起来，存在app全局 杀掉进程后也会消失
+      // wx.navigateTo({ url: '../user/user' });
       wx.navigateTo({ url: '../auth/auth' });
     } else {
       wx.navigateTo({ url: '../add/add?status=0' });  //跳转记账页面 参数status = 0 是支出的状态
@@ -160,6 +164,7 @@ Page({
   },
   srfun(e) {
     if (app.globalData.userInfo == null) {
+      // wx.navigateTo({ url: '../user/user' });
       wx.navigateTo({ url: '../auth/auth' });
     } else {
       wx.navigateTo({ url: '../add/add?status=1' });   //跳转记账页面 参数status = 1 是收入的状态

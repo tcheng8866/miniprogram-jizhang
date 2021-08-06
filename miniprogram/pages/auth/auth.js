@@ -51,7 +51,7 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-    // 全局更新
+    // 全局更新【小程序进程杀掉会丢失】
     app.globalData.userInfo = this.data.userInfo
     // 授权后延时返回
     setTimeout(() => {
