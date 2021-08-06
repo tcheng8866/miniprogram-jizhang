@@ -92,7 +92,6 @@
   </view>
 </view>
 <view class="shuaixuan-img-box" style="{{shuaixuanboxBottom}}" catchtouchmove="{{stopPageScroll}}">
-  <scroll-view scroll-y="true" style="height:100%;">
     <image src="/images/close.png" class="close" bindtap="close"></image>
     <view class="shuaixuan-box">
       <block wx:for="{{shuaixuanTypeimg}}" wx:key="key">
@@ -102,5 +101,4 @@
         </view>
       </block>
     </view>
-  </scroll-view>
 </view>

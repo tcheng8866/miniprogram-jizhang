@@ -271,7 +271,8 @@ page{
 .shuaixuan-box{
   display: flex;
   flex-wrap: wrap;
-  margin-top: 20rpx;
+  justify-content: space-around;
+  margin-top: 30%;
 }
 .img-text{
   text-align: center;
@@ -279,8 +280,8 @@ page{
   font-size: 28rpx;
 }
 .img-text image{
-  width: 80rpx;
-  height: 80rpx;
+  width: 150rpx;
+  height: 150rpx;
 }
 .close{
   position: absolute;
@@ -288,5 +289,5 @@ page{
   height: 40rpx;
   left: 50%;
   margin-left: -20rpx;
-  bottom: 20rpx;
+  top: 600rpx;
 }

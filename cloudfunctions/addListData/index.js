@@ -1,3 +1,4 @@
+// 按创建时间筛选 “2021-09-05 星期日”
 const cloud = require('wx-server-sdk')
 cloud.init()
 const db = cloud.database()

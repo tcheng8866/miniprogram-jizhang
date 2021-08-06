@@ -16,8 +16,8 @@ Page({
       { "img": "../../images/qt.png", "text": "其他" },
     ],
     shuaixuanTypeimg: [
-      { "img": "../../images/gz.png", "text": "收入", "status": "1" },
-      { "img": "../../images/cy.png", "text": "支出", "status": "0"  }
+      { "img": "../../images/sr-h.png", "text": "收入", "status": "1" },
+      { "img": "../../images/zc-h.png", "text": "支出", "status": "0"  }
     ],
     dataList: [],   //数据
     year: new Date().getFullYear(),                 //当前年份

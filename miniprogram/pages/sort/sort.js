@@ -13,69 +13,58 @@ Page({
   onLoad: function (options) {
     this.setData({ options: options })
     that = this;
-    this.geticonListData(this.data.options.status);
+    // 收入/支出   按月/按年
+    this.getMonthYearData(this.data.options.status);
   },
-  geticonListData(status) {
+  // 云函数查询所有
+  getMonthYearData(status) {
     wx.cloud.callFunction({
       name: 'allDataList'
     }).then(res => {
       console.log(res)
-      var iconList = [];
+      var temp = [];
+      // 处理数据层级
       for (var i in res.result.data) {
         for (var j in res.result.data[i].dataList) {
+          // 筛选支出或收入
           if (res.result.data[i].dataList[j].status == status) {
-            // res.result.data[i].dataList.splice(j,1);
             res.result.data[i].dataList[j].createdTime = res.result.data[i].createdTime;
             res.result.data[i].dataList[j].timeDaty = res.result.data[i].timeDaty;
             res.result.data[i].dataList[j].year = res.result.data[i].year
-            iconList.push(res.result.data[i].dataList[j])
+            temp.push(res.result.data[i].dataList[j])
           }
         }
       }
-      console.log(iconList);
       var listData = [];
-      for (let item of iconList) {
-        if (item.timeDaty == that.data.date) {
-          listData.push(item)
-        }
+      // 处理按月、按年逻辑
+      if (this.data.active01 == 'active') {
+        temp.map(item => {
+          if (item.timeDaty == getCurDateFmt()) {
+            listData.push(item)
+          }
+        })
+      } else {
+        temp.map(item => {
+          if (item.year == new Date().getFullYear()) {
+            listData.push(item)
+          }
+        })
       }
-      for (var i = 1; i < listData.length; i++) {  //大到小排序
-        var item = listData[i];
-        var j = i - 1;
-        while (j > -1 && Number(listData[j].prive) < Number(item.prive)) {
-          listData[j + 1] = listData[j];
-          j--;
-        }
-        listData[j + 1] = item;
-      }
-      console.log(listData)
-      var zc = 0;
-      var sr = 0;
-      for (let item of listData) {
-        if (item.status == 0) {
-          zc -= Number(item.prive);
-        } else {
-          sr += Number(item.prive);
-        }
-      }
-      that.setData({ listData: listData, zc: zc.toFixed(2), sr: sr.toFixed(2) })
-      console.log(this.data.zc, this.data.sr)
-    }).catch(err => { console.log(err) })
+      that.setData({ listData: listData })
+    })
   },
   shourufun() {
     this.setData({
       active01: "active",
       active02: ""
     })
+    this.getMonthYearData(this.data.options.status);
   },
   zhichufun() {
     this.setData({
       active01: "",
       active02: "active",
     })
-  },
-  bindDateChange: function (e) {
-    this.setData({ date: e.detail.value })
-    this.geticonListData(this.data.options.img);
-  },
+    this.getMonthYearData(this.data.options.status);
+  }
 })

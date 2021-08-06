@@ -4,22 +4,7 @@
     <view class='navtop02 {{active02}}' bindtap='zhichufun'>年</view>
   </view>
 </view>
-<view style="height:168rpx;" wx:if="{{active01}}"></view>
-<view style="height:16rpx;" wx:if="{{active02}}"></view>
-
-<view class="time-zc-sr" wx:if="{{active01}}">
-  <view class="section">
-    <picker mode="date" fields="month" value="{{date}}" bindchange="bindDateChange">
-      <view class="picker">
-        {{date}}
-      </view>
-    </picker>
-  </view>
-  <view class="zc-sr-box">
-    <view>收入：{{sr}}</view>
-    <view>支出：{{zc}}</view>
-  </view>
-</view>
+<view style="height:16rpx;"></view>
 <view class="zcphb">排行榜</view>
 <block wx:for="{{listData}}" wx:key="key">
   <view class="list-data">

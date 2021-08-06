@@ -1,6 +1,6 @@
 const cloud = require('wx-server-sdk')
 
-// 首页、初始化查询（按月、默认当月）
+// 按照年月筛选  “2021-09”   首页
 cloud.init()
 const db = cloud.database()
 const MAX_LIMIT = 100

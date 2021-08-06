@@ -1,3 +1,4 @@
+// 按年筛选 “2021”
 const cloud = require('wx-server-sdk')
 cloud.init()
 const db = cloud.database()
