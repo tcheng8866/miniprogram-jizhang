@@ -53,6 +53,8 @@ Page({
     })
     // 全局更新【小程序进程杀掉会丢失】
     app.globalData.userInfo = this.data.userInfo
+    // [持久化、小程序销毁也不会丢]
+    wx.setStorageSync('userInfo', this.data.userInfo)
     // 授权后延时返回
     setTimeout(() => {
       wx.navigateBack({

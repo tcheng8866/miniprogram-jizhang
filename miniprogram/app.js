@@ -40,6 +40,13 @@ App({
         });
       });
     }
+    //获取存储信息[持久化、小程序销毁也不会丢]
+    wx.getStorage({
+      key: 'userInfo',
+      success: function (res) {
+        app.globalData.userInfo = res.data
+      }
+    })
   },
   // 全局数据(onLaunch外边)
   globalData: {
