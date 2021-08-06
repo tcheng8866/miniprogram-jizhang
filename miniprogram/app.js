@@ -40,5 +40,9 @@ App({
         });
       });
     }
+  },
+  // 全局数据(onLaunch外边)
+  globalData: {
+    userInfo: null
   }
 })

@@ -60,7 +60,7 @@
         {
           "id": -1,
           "name": "test guide",
-          "pathName": "pages/test/test"
+          "pathName": "pages/auth/auth"
         }
       ]
     }

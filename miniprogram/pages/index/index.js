@@ -3,6 +3,8 @@ const priveTable = db.collection("priveTable");
 var that;
 var query;
 
+var app = getApp();
+
 Page({
   data: {
     shuaixuanimg: [
@@ -17,7 +19,7 @@ Page({
     ],
     shuaixuanTypeimg: [
       { "img": "../../images/sr-h.png", "text": "收入", "status": "1" },
-      { "img": "../../images/zc-h.png", "text": "支出", "status": "0"  }
+      { "img": "../../images/zc-h.png", "text": "支出", "status": "0" }
     ],
     dataList: [],   //数据
     year: new Date().getFullYear(),                 //当前年份
@@ -148,9 +150,14 @@ Page({
     }
   },
   zcfun(e) {
-    wx.navigateTo({ url: '../add/add?status=0' });  //跳转记账页面 参数status = 0 是支出的状态
-    this.setData({ addimgStyle: '', menuStyle: 'transform: rotate(180deg);transition: all .3s;' });
-    setTimeout(() => { this.setData({ addimgStyle: '', menuStyle: '' }); }, 300);
+    debugger
+    if (app.globalData.userInfo == null) {
+      wx.navigateTo({ url: '../auth/auth' });
+    } else {
+      wx.navigateTo({ url: '../add/add?status=0' });  //跳转记账页面 参数status = 0 是支出的状态
+      this.setData({ addimgStyle: '', menuStyle: 'transform: rotate(180deg);transition: all .3s;' });
+      setTimeout(() => { this.setData({ addimgStyle: '', menuStyle: '' }); }, 300);
+    }
   },
   srfun(e) {
     wx.navigateTo({ url: '../add/add?status=1' });   //跳转记账页面 参数status = 1 是收入的状态
@@ -198,7 +205,9 @@ Page({
     console.log("执行")
   },
   goimgfun(e) {
-    wx.navigateTo({
+    // navigateTo 当前页面和要跳转页面有层级关系，不会销毁【有返回】
+    // redirectTo 这个左上角【无返回有主页】、会销毁当前，点主页回主页会刷新页面数据
+    wx.redirectTo({
       url: '../sort/sort?status=' + e.currentTarget.dataset.status
     })
     this.setData({ stopPageScroll: '', shuaixuanboxBottom: 'bottom:-100%' })
