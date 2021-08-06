@@ -5,6 +5,18 @@ page{
 }
 .container {}
 
+.auth {
+  margin-top: 60%;
+  height: 200rpx;
+  line-height: 200rpx;
+  width: 60%;
+  color: white;
+  font-weight: bold;
+  font-size: 50rpx;
+  background-color: coral;
+}
+
+
 .userInfo {
   padding: 50rpx;
 }
