@@ -1,10 +1,12 @@
-import {
-  getWeek
-} from "../../uits/uits.js";
+import { getWeek } from "../../uits/uits.js";
+
 const db = wx.cloud.database();
 const _ = db.command;
 const priveTable = db.collection("priveTable");
+
+var app = getApp();
 var that;
+
 Page({
   data: {
     formData: [

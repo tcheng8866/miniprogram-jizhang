@@ -44,7 +44,7 @@ App({
     wx.getStorage({
       key: 'userInfo',
       success: function (res) {
-        app.globalData.userInfo = res.data
+        this.globalData.userInfo = res.data
       }
     })
   },

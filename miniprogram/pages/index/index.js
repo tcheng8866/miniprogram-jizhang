@@ -1,9 +1,8 @@
 const db = wx.cloud.database();
 const priveTable = db.collection("priveTable");
-var that;
-var query;
 
-var app = getApp();
+var app = getApp()
+var that
 
 Page({
   data: {

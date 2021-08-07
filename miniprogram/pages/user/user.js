@@ -1,4 +1,6 @@
 var app = getApp()
+var that
+
 Page({
 	data: {
 		userInfo: {
@@ -12,6 +14,8 @@ Page({
 	},
 	// 没有授权是可以操作数据库、云函数的、有openid
 	onLoad: function(options) {
+    that = this;
+
 		// 有授权：更新全局用户信息; 只是获取不到用户用户信息（微信号、头像）而已
 		wx.getSetting({
 			success: res => {

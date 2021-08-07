@@ -1,4 +1,6 @@
+var app = getApp();
 var that;
+
 Page({
   data: {
     dataList:[],

@@ -1,4 +1,3 @@
-// components/calendar/calendar.js
 /**
  * 日历选择组件
  * 2018-03-04

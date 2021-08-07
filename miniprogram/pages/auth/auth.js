@@ -1,4 +1,5 @@
 var app = getApp();
+var that;
 
 Page({
   data: {
@@ -7,12 +8,23 @@ Page({
       avatarUrl: ''
     },
     hasUserInfo: false,
-    canIUseGetUserProfile: false,
+    canIUseGetUserProfile: false, // 走老版 open-type="getUserInfo"
   },
   onLoad() {
+    that = this;
     if (wx.getUserProfile) {
       this.setData({
-        canIUseGetUserProfile: true
+        canIUseGetUserProfile: true  // 走新版 bindtap="getUserProfile"
+      })
+      debugger
+      // 判断是否已存在用户信息
+      wx.getSetting({
+        success: res => {
+          console.log("authSetting", res.authSetting)
+          if (res.authSetting['scope.userInfo']) {
+            this.getUserProfile()
+          }
+        }
       })
     }
   },

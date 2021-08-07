@@ -7,9 +7,9 @@ import {
 const db = wx.cloud.database();
 const _ = db.command;
 const priveTable = db.collection("priveTable");
-var that;
 
 var app = getApp();
+var that;
 
 Page({
   data: {

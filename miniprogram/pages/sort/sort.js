@@ -1,7 +1,8 @@
-const db = wx.cloud.database();
-const priveTable = db.collection("priveTable");
 import { getCurDateFmt } from "../../uits/uits.js";
+
+var app = getApp();
 var that;
+
 Page({
   data: {
     listData: [],

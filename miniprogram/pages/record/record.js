@@ -1,25 +1,19 @@
-import {
-  getWeek
-} from "../../uits/uits.js";
+import { getWeek } from "../../uits/uits.js";
+
 var that;
+var app = getApp();
+
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
     selected: [],
-    dataList:[],
-    active:''
+    dataList: [],
+    active: ''
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     that = this;
   },
-  onReady(){
+  onReady() {
     this.getAllDataList();
-    //this.getDataList(this.data.createdTime)
   },
   /**
   * 日历是否被打开
@@ -73,25 +67,25 @@ Page({
       url: '../test/detail/detail?_id=' + _id + '&index=' + index + "&createdTime=" + that.data.createdTime,
     })
   },
-  getDataList(createdTime){
+  getDataList(createdTime) {
     console.log(createdTime)
     this.getAllDataList();
   },
-  getAllDataList(){
+  getAllDataList() {
     wx.cloud.callFunction({
-      name:'allDataList'
-    }).then(res =>{
+      name: 'allDataList'
+    }).then(res => {
       console.log(res)
       var data = res.result.data;
       var selected = [];
-      for(var i in data){
+      for (var i in data) {
         var index = data[i].createdTime.indexOf(" ");
-        data[i].createdTime = data[i].createdTime.substring(0,index);
+        data[i].createdTime = data[i].createdTime.substring(0, index);
         var obj = {};
         obj.date = data[i].createdTime;
         if (data[i].dataList.length !== 0) selected.push(obj);
       }
       that.setData({ selected: selected })
-    }).catch(err =>{ console.log(err) })
+    }).catch(err => { console.log(err) })
   }
 })
