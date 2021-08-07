@@ -56,6 +56,7 @@ App({
   },
   auth_login: function () {
     // 获取存储信息[持久化、小程序销毁也不会丢]
+    // 开发版的模式就是一次性的，手动销毁小程序会清除缓存、【但体验版、正式版亲测 有时候不会、有时候会】
     wx.getStorage({
       key: 'userInfo',
       success: function (res) {
