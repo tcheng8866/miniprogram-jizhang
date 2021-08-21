@@ -16,7 +16,6 @@ Page({
       this.setData({
         canIUseGetUserProfile: true  // 走新版 bindtap="getUserProfile"
       })
-      debugger
       // 判断是否已存在用户信息
       wx.getSetting({
         success: res => {
